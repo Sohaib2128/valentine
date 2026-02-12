@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Surprise</title>
+    <title>A Special Surprise</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
@@ -14,16 +14,17 @@
         .btn-pink:hover { transform: scale(1.1); background-color: #ff5c8a; }
         .gift-img { cursor: pointer; transition: transform 0.3s; width: 160px; }
         .gift-img:hover { transform: translateY(-10px); }
-        .coupon-img { width: 90%; max-width: 500px; border-radius: 15px; margin: 20px 0; }
-        .nav-arrow { width: 50px; cursor: pointer; transition: 0.2s; }
-        .nav-arrow:hover { transform: scale(1.2); }
+        .coupon-img { width: 90%; max-width: 500px; border-radius: 15px; margin: 20px 0; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .nav-arrow { font-size: 2.5rem; color: #ff85a2; cursor: pointer; transition: 0.2s; user-select: none; font-weight: bold; }
+        .nav-arrow:hover { transform: scale(1.3); color: #ff5c8a; }
+        video { border-radius: 15px; }
     </style>
 </head>
 <body>
 
     <div id="page1" class="page active">
         <h1 class="text-3xl font-bold mb-6">hey! i made something for you<br><span class="text-xl font-normal">do you wanna see??</span></h1>
-        <img src="image_4f50f5.png" alt="Cute Cat" class="w-64 mb-8">
+        <img src="cat_intro.png" alt="Intro" class="w-64 mb-8">
         <div class="flex gap-4">
             <button onclick="showPage(3)" class="btn-pink">YES</button>
             <button onclick="showPage(2)" class="btn-pink">NO</button>
@@ -32,19 +33,19 @@
 
     <div id="page2" class="page">
         <h1 class="text-4xl font-bold text-pink-600 mb-6 uppercase">HOW DARE YOU!</h1>
-        <img src="image_4f5495.png" alt="Angry Cat" class="w-64 mb-8">
+        <img src="cat_angry.png" alt="Angry" class="w-64 mb-8">
         <button onclick="showPage(1)" class="btn-pink">TRY AGAIN</button>
     </div>
 
     <div id="page3" class="page">
         <h1 class="text-3xl font-bold text-pink-500 mb-6">That's a goodgirl</h1>
-        <img src="Screenshot 2026-02-12 171955.png" alt="Patting" class="w-64 mb-8">
+        <video src="cat_pat.mp4" autoplay loop muted playsinline class="w-64 mb-8"></video>
         <button onclick="showPage(4)" class="btn-pink">NEXT</button>
     </div>
 
     <div id="page4" class="page">
-        <h1 class="text-3xl font-bold text-pink-500 mb-6 text-center">will you be my valentine</h1>
-        <img src="Screenshot 2026-02-12 172047.png" alt="Hug" class="w-64 mb-8">
+        <h1 class="text-3xl font-bold text-pink-500 mb-6">will you be my valentine</h1>
+        <video src="valentine_ask.mp4" autoplay loop muted playsinline class="w-64 mb-8"></video>
         <div class="flex gap-4">
             <button onclick="showPage(6)" class="btn-pink">YES</button>
             <button onclick="showPage(5)" class="btn-pink">NO</button>
@@ -53,16 +54,16 @@
 
     <div id="page5" class="page">
         <h1 class="text-3xl font-bold text-pink-500 mb-6">Did you say no?</h1>
-        <img src="Screenshot 2026-02-12 172126.png" alt="Sad" class="w-64 mb-8">
+        <video src="cat_sad.mp4" autoplay loop muted playsinline class="w-64 mb-8"></video>
         <button onclick="showPage(4)" class="btn-pink">TRY AGAIN</button>
     </div>
 
     <div id="page6" class="page">
         <h1 class="text-3xl font-bold text-red-600 mb-2 uppercase">GIFT FOR YOU</h1>
         <div class="flex flex-wrap justify-center gap-8 my-8">
-            <img src="Screenshot 2026-02-12 172153.png" onclick="showPage(7)" class="gift-img">
-            <img src="Screenshot 2026-02-12 172153.png" onclick="showPage(8)" class="gift-img">
-            <img src="Screenshot 2026-02-12 172153.png" onclick="showPage(9)" class="gift-img">
+            <img src="gift_box.png" onclick="showPage(7)" class="gift-img">
+            <img src="gift_box.png" onclick="showPage(8)" class="gift-img">
+            <img src="gift_box.png" onclick="showPage(9)" class="gift-img">
         </div>
         <p class="text-pink-400 font-bold uppercase">CLICK ANY GIFT TO OPEN</p>
     </div>
@@ -70,7 +71,7 @@
     <div id="page7" class="page bg-pink-50">
         <div class="max-w-2xl bg-white p-8 rounded-xl shadow-lg">
             <p class="text-lg italic text-gray-700 leading-relaxed">
-                I'm sitting here trying to put into words all these feelings I've got bubbling up... honestly, you're not just a part of my life now - you're my whole world.
+                "I'm sitting here trying to put into words all these feelings... you're not just a part of my life now - you're my whole world."
             </p>
             <button onclick="showPage(6)" class="btn-pink mt-8 bg-red-800">NEXT</button>
         </div>
@@ -78,65 +79,65 @@
 
     <div id="page8" class="page">
         <h1 class="text-2xl font-bold mb-6">Proof that love looks like this</h1>
-        <img src="image_4fb9f6.jpg" alt="Puzzle" class="w-96 mb-8 rounded-lg shadow-md">
+        <img src="puzzle.jpg" alt="Puzzle" class="w-96 mb-8 shadow-md">
         <button onclick="showPage(6)" class="btn-pink bg-red-800">NEXT</button>
     </div>
 
     <div id="page9" class="page">
         <h1 class="text-3xl font-bold text-pink-500 mb-6 uppercase">DO YOU WANNA GO AHEAD??</h1>
-        <img src="image_4fba16.png" alt="Warning" class="w-64 mb-8">
+        <img src="warning.png" alt="Warning" class="w-64 mb-8">
         <button onclick="showPage(10)" class="btn-pink">NEXT</button>
     </div>
 
     <div id="page10" class="page">
-        <h1 class="text-3xl font-bold text-pink-600 mb-6 uppercase">Almost there...</h1>
-        <img src="image_4f50f5.png" class="w-48 mb-8">
+        <h1 class="text-3xl font-bold text-pink-600 mb-6 uppercase">Loading your coupons...</h1>
+        <img src="cat_intro.png" class="w-48 mb-8 animate-bounce">
         <button onclick="showPage(11)" class="btn-pink">CONTINUE</button>
     </div>
 
     <div id="page11" class="page">
         <h1 class="text-4xl font-bold text-red-700 mb-4 uppercase">LOVE COUPON</h1>
-        <div class="flex items-center gap-4">
-            <img src="image_4fba4f.jpg" class="coupon-img" alt="Free Snuggles">
-            <div class="flex flex-col gap-4">
-                <button onclick="showPage(12)" class="nav-arrow text-4xl">➔</button>
-            </div>
+        <div class="flex items-center gap-6">
+            <div class="w-10"></div>
+            <img src="coupon1.jpg" class="coupon-img" alt="Coupon 1">
+            <div onclick="showPage(12)" class="nav-arrow">➔</div>
         </div>
-        <button onclick="showPage(15)" class="btn-pink mt-10 bg-red-800">NEXT</button>
+        <button onclick="showPage(15)" class="btn-pink mt-10 bg-red-800">SKIP TO END</button>
     </div>
 
     <div id="page12" class="page">
         <h1 class="text-4xl font-bold text-red-700 mb-4 uppercase">LOVE COUPON</h1>
-        <div class="flex items-center gap-4">
-            <button onclick="showPage(11)" class="nav-arrow text-4xl">⬅</button>
-            <img src="image_50328c.jpg" class="coupon-img" alt="Movie Night">
-            <button onclick="showPage(13)" class="nav-arrow text-4xl">➔</button>
+        <div class="flex items-center gap-6">
+            <div onclick="showPage(11)" class="nav-arrow">⬅</div>
+            <img src="coupon2.jpg" class="coupon-img" alt="Coupon 2">
+            <div onclick="showPage(13)" class="nav-arrow">➔</div>
         </div>
-        <button onclick="showPage(15)" class="btn-pink mt-10 bg-red-800">NEXT</button>
+        <button onclick="showPage(15)" class="btn-pink mt-10 bg-red-800">SKIP TO END</button>
     </div>
 
     <div id="page13" class="page">
         <h1 class="text-4xl font-bold text-red-700 mb-4 uppercase">LOVE COUPON</h1>
-        <div class="flex items-center gap-4">
-            <button onclick="showPage(12)" class="nav-arrow text-4xl">⬅</button>
-            <img src="image_5032af.png" class="coupon-img" alt="Virtual Date">
-            <button onclick="showPage(14)" class="nav-arrow text-4xl">➔</button>
+        <div class="flex items-center gap-6">
+            <div onclick="showPage(12)" class="nav-arrow">⬅</div>
+            <img src="coupon3.jpg" class="coupon-img" alt="Coupon 3">
+            <div onclick="showPage(14)" class="nav-arrow">➔</div>
         </div>
-        <button onclick="showPage(15)" class="btn-pink mt-10 bg-red-800">NEXT</button>
+        <button onclick="showPage(15)" class="btn-pink mt-10 bg-red-800">SKIP TO END</button>
     </div>
 
     <div id="page14" class="page">
         <h1 class="text-4xl font-bold text-red-700 mb-4 uppercase">LOVE COUPON</h1>
-        <div class="flex items-center gap-4">
-            <button onclick="showPage(13)" class="nav-arrow text-4xl">⬅</button>
-            <img src="image_50355a.png" class="coupon-img" alt="Free Kisses">
+        <div class="flex items-center gap-6">
+            <div onclick="showPage(13)" class="nav-arrow">⬅</div>
+            <img src="coupon1.jpg" class="coupon-img" alt="Coupon 4">
+            <div class="w-10"></div>
         </div>
         <button onclick="showPage(15)" class="btn-pink mt-10 bg-red-800">NEXT</button>
     </div>
 
     <div id="page15" class="page">
-        <h1 class="text-4xl font-bold text-pink-600">The End ❤️</h1>
-        <p class="text-xl mt-4">Happy Valentine's Day!</p>
+        <h1 class="text-4xl font-bold text-pink-600 mb-4">The End ❤️</h1>
+        <p class="text-xl text-gray-600">I love you more than words can say!</p>
         <button onclick="showPage(1)" class="btn-pink mt-10">RESTART</button>
     </div>
 
