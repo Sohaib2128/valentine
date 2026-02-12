@@ -1,59 +1,116 @@
-<div id="page1" class="content">
-    <h1>Page 1: Where it all started</h1>
-    <p>TEXT GOES HERE (e.g., A memory of your first date or first message)</p>
-    <img src="cat4.jpg" alt="Memory Image">
-    <div class="btn-container">
-        <button class="btn" onclick="showPage('page2', 2)">Next Page</button>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Surprise For You</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+        body { font-family: 'Quicksand', sans-serif; background-color: #fff5f7; }
+        .page { display: none; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; }
+        .active { display: flex; }
+        .btn-pink { background-color: #ff85a2; color: white; padding: 12px 40px; border-radius: 50px; font-weight: bold; transition: transform 0.2s; cursor: pointer; }
+        .btn-pink:hover { transform: scale(1.1); background-color: #ff5c8a; }
+        .gift-img { cursor: pointer; transition: transform 0.3s; }
+        .gift-img:hover { transform: translateY(-10px); }
+    </style>
+</head>
+<body>
 
-<div id="page2" class="content">
-    <h1>Page 2: My Favorite Thing About You</h1>
-    <p>TEXT GOES HERE (e.g., Talk about their smile or their kindness)</p>
-    <div class="btn-container">
-        <button class="btn" onclick="showPage('page3', 3)">Next Page</button>
+    <div id="page1" class="page active">
+        <h1 class="text-3xl font-bold mb-6">hey! i made something for you<br><span class="text-xl font-normal">do you wanna see??</span></h1>
+        <img src="cat_matcha.png" alt="Cute Cat" class="w-64 mb-8">
+        <div class="flex gap-4">
+            <button onclick="showPage(3)" class="btn-pink">YES</button>
+            <button onclick="showPage(2)" class="btn-pink">NO</button>
+        </div>
     </div>
-</div>
 
-<div id="page3" class="content">
-    <h1>Page 3: Remember This?</h1>
-    <p>TEXT GOES HERE (e.g., An inside joke or a funny situation you both had)</p>
-    <div class="btn-container">
-        <button class="btn" onclick="showPage('page4', 4)">Next Page</button>
+    <div id="page2" class="page">
+        <h1 class="text-4xl font-bold text-pink-600 mb-6 uppercase">HOW DARE YOU!</h1>
+        <img src="cat_gun.png" alt="Angry Cat" class="w-64 mb-8">
+        <button onclick="showPage(1)" class="btn-pink">TRY AGAIN</button>
     </div>
-</div>
 
-<div id="page4" class="content">
-    <h1 style="color: #ff69b4;">That's a goodgirl</h1>
-    <img src="petting.gif" alt="Petting Animation">
-    <div class="btn-container">
-        <button class="btn" onclick="showPage('page5', 5)">NEXT</button>
+    <div id="page3" class="page">
+        <h1 class="text-3xl font-bold text-pink-500 mb-6">That's a goodgirl</h1>
+        <img src="head_pat.png" alt="Patting" class="w-64 mb-8">
+        <button onclick="showPage(4)" class="btn-pink">NEXT</button>
     </div>
-</div>
 
-<div id="page5" class="content">
-    <h1 style="color: #ff69b4;">will you be my valentine</h1>
-    <img src="valentine_hug.gif" alt="Hugging Cats">
-    <div class="btn-container">
-        <button class="btn" onclick="showPage('page7', 7)">YES</button>
-        <button class="btn" onclick="showPage('page6', 6)">NO</button>
+    <div id="page4" class="page">
+        <h1 class="text-3xl font-bold text-pink-500 mb-6">will you be my valentine</h1>
+        <img src="hugging_chibi.png" alt="Hug" class="w-64 mb-8">
+        <div class="flex gap-4">
+            <button onclick="showPage(6)" class="btn-pink">YES</button>
+            <button onclick="showPage(5)" class="btn-pink">NO</button>
+        </div>
     </div>
-</div>
 
-<div id="page6" class="content">
-    <h1 style="color: #ff69b4;">Did you say no?</h1>
-    <img src="sad_cat_broken_heart.png" alt="Sad Image">
-    <div class="btn-container">
-        <button class="btn" onclick="showPage('page5', 5)">TRY AGAIN</button>
+    <div id="page5" class="page">
+        <h1 class="text-3xl font-bold text-pink-500 mb-6">Did you say no?</h1>
+        <img src="sad_bunny.png" alt="Sad" class="w-64 mb-8">
+        <button onclick="showPage(4)" class="btn-pink">TRY AGAIN</button>
     </div>
-</div>
 
-<div id="page7" class="content">
-    <h1 style="color: #d9534f;">GIFT FOR YOU</h1>
-    <div style="display: flex; justify-content: space-around; margin: 20px 0;">
-        <img src="gift_box.png" alt="Gift" onclick="alert('You unlocked my heart!')" style="cursor:pointer; width: 30%;">
-        <img src="gift_box.png" alt="Gift" onclick="alert('You unlocked my heart!')" style="cursor:pointer; width: 30%;">
-        <img src="gift_box.png" alt="Gift" onclick="alert('You unlocked my heart!')" style="cursor:pointer; width: 30%;">
+    <div id="page6" class="page">
+        <h1 class="text-3xl font-bold text-red-600 mb-2 uppercase">GIFT FOR YOU</h1>
+        <p class="text-pink-400 mb-8">CLICK ANY GIFT TO OPEN</p>
+        <div class="flex flex-wrap justify-center gap-8">
+            <img src="gift_box.png" onclick="showPage(7)" class="w-40 gift-img">
+            <img src="gift_box.png" onclick="showPage(8)" class="w-40 gift-img">
+            <img src="gift_box.png" onclick="showPage(9)" class="w-40 gift-img">
+        </div>
     </div>
-    <h2 style="color: #ff69b4;">CLICK ANY GIFT TO OPEN</h2>
-</div>
+
+    <div id="page7" class="page bg-pink-100">
+        <div class="max-w-xl px-6">
+            <p class="text-lg leading-relaxed text-gray-800 italic">
+                "I'm sitting here trying to put into words all these feelings... you're not just a part of my life now - you're my whole world."
+            </p>
+            <button onclick="showPage(6)" class="btn-pink mt-10">NEXT (Back to Gifts)</button>
+        </div>
+    </div>
+
+    <div id="page8" class="page">
+        <h1 class="text-2xl font-bold mb-6">Proof that love looks like this</h1>
+        <img src="heart_puzzle.png" alt="Heart Collage" class="w-80 mb-8">
+        <button onclick="showPage(6)" class="btn-pink">NEXT (Back to Gifts)</button>
+    </div>
+
+    <div id="page9" class="page">
+        <h1 class="text-3xl font-bold text-pink-500 mb-6 uppercase">DO YOU WANNA GO AHEAD??</h1>
+        <img src="warning_sign.png" alt="Warning" class="w-64 mb-8">
+        <button onclick="showPage(10)" class="btn-pink">NEXT</button>
+    </div>
+
+    <div id="page10" class="page">
+        <h1 class="text-3xl font-bold text-pink-500 mb-6 uppercase">Entering the Heart Zone...</h1>
+        <p class="mb-8">Content for Page 10 goes here!</p>
+        <button onclick="showPage(11)" class="btn-pink">NEXT</button>
+    </div>
+
+    <div id="page11" class="page">
+        <h1 class="text-3xl font-bold text-red-700 mb-6 uppercase">LOVE COUPON</h1>
+        <img src="coupon_snuggles.png" alt="Coupon" class="w-96 mb-8 shadow-lg">
+        <button onclick="alert('Stay tuned for the next pages!')" class="btn-pink">TO BE CONTINUED...</button>
+    </div>
+
+    <script>
+        function showPage(pageNum) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Show target page
+            const targetPage = document.getElementById('page' + pageNum);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                // Scroll to top automatically
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
+</body>
+</html>
