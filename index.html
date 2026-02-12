@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Surprise For You</title>
+    <title>Valentine Surprise</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
-        body { font-family: 'Quicksand', sans-serif; background-color: #fff5f7; }
+        body { font-family: 'Quicksand', sans-serif; background-color: #fff5f7; overflow-x: hidden; }
         .page { display: none; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; }
         .active { display: flex; }
-        .btn-pink { background-color: #ff85a2; color: white; padding: 12px 40px; border-radius: 50px; font-weight: bold; transition: transform 0.2s; cursor: pointer; }
+        .btn-pink { background-color: #ff85a2; color: white; padding: 12px 40px; border-radius: 50px; font-weight: bold; transition: transform 0.2s; cursor: pointer; border: none; }
         .btn-pink:hover { transform: scale(1.1); background-color: #ff5c8a; }
         .gift-img { cursor: pointer; transition: transform 0.3s; }
         .gift-img:hover { transform: translateY(-10px); }
+        
+        /* Coupon Carousel Styles */
+        .coupon-container { position: relative; display: flex; align-items: center; justify-content: center; gap: 20px; }
+        .arrow { cursor: pointer; transition: transform 0.2s; width: 50px; }
+        .arrow:hover { transform: scale(1.2); }
+        .coupon-card { max-width: 500px; width: 90%; display: none; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .coupon-card.active-coupon { display: block; animation: fadeIn 0.5s; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -64,19 +73,19 @@
         </div>
     </div>
 
-    <div id="page7" class="page bg-pink-100">
-        <div class="max-w-xl px-6">
+    <div id="page7" class="page bg-pink-50">
+        <div class="max-w-xl px-6 bg-white p-10 rounded-2xl shadow-sm">
             <p class="text-lg leading-relaxed text-gray-800 italic">
                 "I'm sitting here trying to put into words all these feelings... you're not just a part of my life now - you're my whole world."
             </p>
-            <button onclick="showPage(6)" class="btn-pink mt-10">NEXT (Back to Gifts)</button>
+            <button onclick="showPage(6)" class="btn-pink mt-10">NEXT</button>
         </div>
     </div>
 
     <div id="page8" class="page">
         <h1 class="text-2xl font-bold mb-6">Proof that love looks like this</h1>
         <img src="heart_puzzle.png" alt="Heart Collage" class="w-80 mb-8">
-        <button onclick="showPage(6)" class="btn-pink">NEXT (Back to Gifts)</button>
+        <button onclick="showPage(6)" class="btn-pink">NEXT</button>
     </div>
 
     <div id="page9" class="page">
@@ -86,30 +95,62 @@
     </div>
 
     <div id="page10" class="page">
-        <h1 class="text-3xl font-bold text-pink-500 mb-6 uppercase">Entering the Heart Zone...</h1>
-        <p class="mb-8">Content for Page 10 goes here!</p>
-        <button onclick="showPage(11)" class="btn-pink">NEXT</button>
+        <h1 class="text-3xl font-bold text-pink-500 mb-6 uppercase">Ready for your coupons?</h1>
+        <img src="excited_cat.png" alt="Excited" class="w-64 mb-8">
+        <button onclick="showPage(11)" class="btn-pink">SHOW ME!</button>
     </div>
 
     <div id="page11" class="page">
-        <h1 class="text-3xl font-bold text-red-700 mb-6 uppercase">LOVE COUPON</h1>
-        <img src="coupon_snuggles.png" alt="Coupon" class="w-96 mb-8 shadow-lg">
-        <button onclick="alert('Stay tuned for the next pages!')" class="btn-pink">TO BE CONTINUED...</button>
+        <h1 class="text-4xl font-bold text-red-600 mb-10 uppercase tracking-widest">LOVE COUPON</h1>
+        
+        <div class="coupon-container">
+            <img src="arrow_left.png" class="arrow" onclick="changeCoupon(-1)" alt="Previous">
+
+            <img src="coupon_snuggles.png" class="coupon-card active-coupon" id="cpn1">
+            <img src="coupon_movie.png" class="coupon-card" id="cpn2">
+            <img src="coupon_virtual.png" class="coupon-card" id="cpn3">
+            <img src="coupon_kisses.png" class="coupon-card" id="cpn4">
+
+            <img src="arrow_right.png" class="arrow" onclick="changeCoupon(1)" alt="Next">
+        </div>
+
+        <div class="mt-12">
+            <button onclick="showPage(12)" class="btn-pink bg-red-800 hover:bg-red-900">NEXT PAGE</button>
+        </div>
+    </div>
+
+    <div id="page12" class="page">
+        <h1 class="text-3xl font-bold text-pink-500">To be continued...</h1>
+        <p class="mt-4">Wait for the next surprise!</p>
     </div>
 
     <script>
+        // Navigation Logic
         function showPage(pageNum) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
-
-            // Show target page
             const targetPage = document.getElementById('page' + pageNum);
             if (targetPage) {
                 targetPage.classList.add('active');
-                // Scroll to top automatically
                 window.scrollTo(0, 0);
             }
+        }
+
+        // Coupon Logic
+        let currentCoupon = 1;
+        const totalCoupons = 4;
+
+        function changeCoupon(step) {
+            // Hide current
+            document.getElementById('cpn' + currentCoupon).classList.remove('active-coupon');
+            
+            // Calculate next
+            currentCoupon += step;
+            if (currentCoupon > totalCoupons) currentCoupon = 1;
+            if (currentCoupon < 1) currentCoupon = totalCoupons;
+
+            // Show next
+            document.getElementById('cpn' + currentCoupon).classList.add('active-coupon');
         }
     </script>
 </body>
